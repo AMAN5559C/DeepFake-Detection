@@ -27,8 +27,7 @@ pyparsing==2.4.7
 python-dateutil==2.8.2
 pytz==2021.1
 PyWavelets==1.1.1
-#regex==2021.7.6
-regex==2021.8.3
+#regex==2021.7.6       older version of regex sometimes it doesnt support the latest verisons of python and for this code the py thon version is recommended of py  3.9.x
 scikit-image==0.18.3
 scikit-learn==0.24.2
 scipy==1.7.0
