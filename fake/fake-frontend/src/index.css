@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Alert animations (optional, used by framer-motion) */
+.alert-slide {
+  animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* File preview box */
+.preview-box {
+  border: 1px solid #4b5563; /* Equivalent to border-gray-700 */
+  border-radius: 0.5rem; /* Equivalent to rounded-lg */
+  padding: 1rem; /* Equivalent to p-4 */
+  background-color: #1c1c1c;
+}
+
+/* Button hover effects (optional override for consistency) */
+.btn-red {
+  @apply bg-red-600 text-white hover:bg-red-700 shadow-lg rounded-lg;
+}
+
+.deepfake-card {
+  width: 100%;
+  max-width: 36rem; /* same as max-w-xl in Tailwind */
+  background-color: #141414;
+  padding: 1.5rem; /* same as p-6 */
+  border-radius: 1rem; /* same as rounded-2xl */
+  border: 1px solid #4b5563; /* gray-700 */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow-xl */
+}
+
+
+.background-image {
+  background-image: url(".mainbkg.png"); /* make sure it's in public/assets or src/assets */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  opacity: 0.9;
+  filter: brightness(0.6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+
