@@ -1,3 +1,5 @@
+// DeepfakeDetector.jsx
+
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,6 +15,9 @@ const DeepfakeDetector = () => {
   const [showAlert, setShowAlert] = useState("");
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [detectionResult, setDetectionResult] = useState(null);
+
+  const userEmail = "user@example.com"; // 🔁 Replace this with actual user email from auth if needed
+  const userId = userEmail.split("@")[0]; // ✅ Extracted user_id
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -62,8 +67,10 @@ const DeepfakeDetector = () => {
       const formData = new FormData();
       const actualFile = document.querySelector('input[type="file"]').files[0];
       formData.append("file", actualFile);
+      formData.append("user_email", userEmail); // Still keeping this for backend ref
+      formData.append("user_id", userId); // 🆕 Send the extracted user_id
 
-      const response = await fetch("http://localhost:5000/detect", {
+      const response = await fetch("http://127.0.0.1:5000/upload", {
         method: "POST",
         body: formData,
       });
@@ -71,7 +78,7 @@ const DeepfakeDetector = () => {
       if (!response.ok) throw new Error("Failed to analyze file");
 
       const data = await response.json();
-      setDetectionResult(data);
+      setDetectionResult(data.result);
       setShowAlert("Detection completed!");
     } catch (error) {
       console.error(error);
@@ -207,12 +214,12 @@ const DeepfakeDetector = () => {
           <div className="mt-6 text-center">
             <h3
               className={`text-xl font-bold ${
-                detectionResult.isFake
+                detectionResult.verdict === "Fake"
                   ? "text-red-500"
                   : "text-green-500"
               }`}
             >
-              {detectionResult.isFake
+              {detectionResult.verdict === "Fake"
                 ? "🚫 Deepfake Detected"
                 : "✅ Authentic Media"}
             </h3>
