@@ -11,3 +11,4 @@ torch
 torchvision
 Pillow
 flask-cors
+pretrainedmodels
