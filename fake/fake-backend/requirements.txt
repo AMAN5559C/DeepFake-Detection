@@ -10,3 +10,4 @@ opencv-python
 torch
 torchvision
 Pillow
+flask-cors
