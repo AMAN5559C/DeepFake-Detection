@@ -1,0 +1,12 @@
+Flask
+gunicorn
+python-dotenv
+cloudinary
+sendgrid
+pytz
+apscheduler
+moviepy
+opencv-python
+torch
+torchvision
+Pillow
