@@ -70,7 +70,7 @@ const DeepfakeDetector = () => {
       formData.append("user_email", userEmail); // Still keeping this for backend ref
       formData.append("user_id", userId); // 🆕 Send the extracted user_id
 
-      const response = await fetch(" https://3d8b99d2ff95.ngrok-free.app.app/upload", {
+      const response = await fetch(" https://3d8b99d2ff95.ngrok-free.app/upload", {
         method: "POST",
         body: formData,
       });
